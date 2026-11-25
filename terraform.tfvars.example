@@ -1,0 +1,15 @@
+# Create terraform.tfvars from this file. Do not commit terraform.tfvars.
+aws_region      = "eu-west-3"
+project_name    = "talcraft"
+enable_app      = false # FIRST APPLY: leave off until container and secrets are ready
+container_image = "public.ecr.aws/docker/library/nginx:stable-alpine" # demo; replace with your immutable ECR URI
+container_port  = 80
+desired_count   = 2
+max_tasks       = 4
+db_name         = "appdb"
+db_username     = "appadmin" # RDS master admin only; do not use in ECS
+app_db_secret_arn = "" # optional, ARN of existing app-specific username/password JSON secret
+# Recommended: true to demonstrate database AZ failover; costs more
+# db_multi_az = true
+budget_email       = "" # email address enables the budget alert
+monthly_budget_usd = 100
